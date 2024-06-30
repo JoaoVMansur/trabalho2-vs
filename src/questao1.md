@@ -17,7 +17,7 @@ Como podemos observar, apesar de ser uma suposição valida, o ano de 2019 so n�
 
 <div class="grid grid-cols-2">
     <div id="VoosPorMesAno" class="card grid-colspan-2">
-        <h2 class="title">Posição no Chart de Cada Plataforma</h2>
+        <h2 class="title">Quantidade de voos por mes</h2>
         <div style="width: 100%; margin-top: 15px;">
             ${vl.render(VoosPorMesAno(divWidth - 200))}
         </div>
@@ -39,6 +39,29 @@ Agora queremos saber a distribuicao de tipo de voo(economica, primium ou primeir
 </div>
 
 Uma dominancia dos voos de primeira classe foi encotntrada, em todos os anos tivemos mais voos de primeira classe do que de outros meios separados,
+
+
+
+<div class="grid grid-cols-2">
+    <div id="VoosPorAgencia" class="card grid-colspan-2">
+        <h2 class="title">Quantidade de Voos por agencia</h2>
+        <div style="width: 100%; margin-top: 15px;">
+            ${vl.render(VoosPorAgencia(divWidth - 200))}
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="grid grid-cols-2">
+    <div id="VoosPorAnoPorAgencia" class="card grid-colspan-2">
+        <h2 class="title">Quantidade de Voos por agencia por ano</h2>
+        <div style="width: 100%; margin-top: 15px;">
+            ${vl.render(VoosPorAnoPorAgencia(divWidth - 200))}
+        </div>
+    </div>
+</div>
 
 ```js 
 const divWidth = Generators.width(document.querySelector("#VoosPorAno"));
@@ -172,7 +195,50 @@ let flightTypeCountsByYearArray = Object.values(flightTypeCountsByYear).map(item
     };
 });
 
-console.log(flightTypeCountsByYearArray);
+let agencyFlightCounts = {};
+
+dataSet.forEach(voo => {
+    let agencyName = voo.agency; // Assuming the dataset has an 'agency' field
+
+    if (!agencyFlightCounts[agencyName]) {
+        agencyFlightCounts[agencyName] = { agency: agencyName, flightCount: 0 };
+    }
+
+    agencyFlightCounts[agencyName].flightCount += 1;
+});
+
+// Convert the object to an array if needed
+let agencyFlightCountsArray = Object.values(agencyFlightCounts).map(item => {
+    return {
+        agency: item.agency,
+        flightCount: item.flightCount
+    };
+});
+let agencyYearFlightCounts = {};
+
+dataSet.forEach(voo => {
+    let agencyName = voo.agency; // Assuming the dataset has an 'agency' field
+    let flightYear = new Date(voo.date).getFullYear(); // Assuming the dataset has a 'date' field
+
+    if (!agencyYearFlightCounts[flightYear]) {
+        agencyYearFlightCounts[flightYear] = { year: flightYear };
+    }
+
+    if (!agencyYearFlightCounts[flightYear][agencyName]) {
+        agencyYearFlightCounts[flightYear][agencyName] = 0;
+    }
+
+    agencyYearFlightCounts[flightYear][agencyName] += 1;
+});
+
+// Convert the object to an array if needed
+let agencyYearFlightCountsArray = Object.values(agencyYearFlightCounts);
+
+console.log(agencyYearFlightCountsArray);
+
+
+
+
 
 
 ```
@@ -294,5 +360,77 @@ function VoosPorMesAno(divWidth) {
         }
     };
 }
+
+
+function VoosPorAgencia(divWidth) {
+    return {
+        spec: {
+            width: divWidth,
+            data: {
+                values: agencyFlightCountsArray
+            },
+            "mark": {
+                "type": "bar"
+            },
+            "encoding": {
+                "x": {
+                    "field": "agency",
+                    "type": "nominal",
+                },
+                "y": {
+                    "field": "flightCount",
+                    "type": "quantitative",
+                },
+            
+            }
+        }
+    };
+}
+
+
+
+function VoosPorAnoPorAgencia(divWidth) {
+    return {
+        spec: {
+            width: divWidth,
+            data: {
+                values: agencyYearFlightCountsArray
+            },
+            repeat: { "layer": ["CloudFy", "FlyingDrops", "Rainbow"] },
+            spec: {
+                "mark": "line",
+                "encoding": {
+                    "x": {
+                        "field": "year",
+                        "type": "ordinal",
+                        "bandwidth": 10.8 
+                    },
+                    "y": {
+                        "aggregate": "sum",
+                        "field": { "repeat": "layer" },
+                        "type": "quantitative",
+                        "title": "Quantidade de Voos"
+                    },
+                    "color": { "datum": { "repeat": "layer" }, "title": "Streaming Chart", scale: { "range":["#1DB954", "#FF0000", "#8A2BE2"] } },
+                    "xOffset": { "datum": { "repeat": "layer" }
+                    }
+                },
+                "config": {
+                    "mark": { "invalid": null },
+                    "scale": { "y": { "zero": true } },
+                    "axis": { "title": "Título da Legenda Lateral" }
+                },
+                "transform": [
+                    {
+                        "stack": "y",
+                        "as": ["y_start", "y_end"],
+                        "groupby": ["quantidade"]
+                    }
+                ]
+            }
+        }
+    };
+}
+
 
 ```

@@ -46,7 +46,7 @@ Agora vamos analisar a relacao entre distancia e preco das passagens. Consideram
         ${ vl.render(PrecoDistancia(divWidth - 45)) }
     </div>
 </div>
-E clara a relacao entre distancia e preco pois conseguimos observar que quanto mais longe o voo 
+E clara a relacao entre distancia e preco pois conseguimos observar que quanto mais longe o voo e o mesmo vale para a relacao entre preco x tempo pois assim como a distancia sao proporcinais, a medida que uma cresce a outra tambem.
 
 
 
@@ -270,31 +270,31 @@ function QuantidadePorTipo(divWidth) {
 }
 
 
-function PrecoDistancia(divWidth) {
-    return {
-        spec: {
-            width: divWidth,
-            height: 400,
-            data: {
-                values: precoDistancia
-            },
-            "mark": {
-                "type": "circle"
-            },
-            "encoding": {
-                "x": {
-                    "field": "distancia",
-                    "type": "quantitative"
+    function PrecoDistancia(divWidth) {
+        return {
+            spec: {
+                width: divWidth,
+                height: 400,
+                data: {
+                    values: precoDistancia
                 },
-                "y": {
-                    "field": "preco",
-                    "type": "quantitative"
+                "mark": {
+                    "type": "circle"
                 },
+                "encoding": {
+                    "x": {
+                        "field": "distancia",
+                        "type": "quantitative"
+                    },
+                    "y": {
+                        "field": "preco",
+                        "type": "quantitative"
+                    },
 
+                }
             }
-        }
-    };
-}
+        };
+    }
 
 
 function PrecoTempo(divWidth) {

@@ -1,10 +1,11 @@
-# Parte 2: Preco dos Voos.
+# Parte 2: Preço dos Vôos.
 <br>
 <br>
 <br>
 
-Para essa segunda parte vamos analisar os dados de uma perspectiva do custo das passagens.
-Primeiro gostariamos de analisar a evolucao do preco medio das passagens para cada ano
+Para a segunda parte deste estudo iremos analisar os dados pela perspectiva do custo das passagens.
+
+Em primeiro lugar gostaríamos de analisar a evolução do preço médio das passagens para cada ano.
 
 
 <div id="PrecoMedioPorAno" class="card">
@@ -14,48 +15,51 @@ Primeiro gostariamos de analisar a evolucao do preco medio das passagens para ca
     </div>
 </div>
 
-Conseguimos por meio dessa visualizacao observar uma certa logica com a hipotese levantada na parte 1 de que o mercado aereo foi impactado pela pandemia do covid-19, podemos ver uma reducao do preco medio das passagens ao longo dos anos de pandemia e uma tendencia de volta de alta em 2023 que foi quando o virus foi vencido.Porem, a diferenca do preco medio das passagens e muito pequena para ser levada a serio.
+Com base nesta visualização, foi possível observar uma certa correspondência lógica com relação a hipótese levantada na Parte 1 deste trabalho, de que o mercado aéreo sofreu impactos por conta da pandemia do COVID-19. É possível observar uma redução do preço médio das passagens ao longo dos anos atrelados ao período da pandemia, assim como houve uma tendência ao retorno do aumento no preço das tarifas das passagens aéreas em 2023, que foi o ano em que a disseminação do vírus conseguiu ser controlada com eficácia. Porém, a diferença do preço médio das passagens possui um valor considerado irrisório para que seja visto como significativo.
 
-# Agencias
+# Agências
 
-Vamos observar agora o preco medio das passagens em relacao as agencias de viagem.
+Neste trecho iremos focar nossa observação em relação ao preço médio das tarifas de vôo em relação as agências de viagem.
 
 
 <div id="PrecoMedioPorAgencia" class="card">
-    <h1>Quantidade de voos por ano</h1>
+    <h1>Quantidade de vôos por ano</h1>
     <div style="width: 100%; margin-top: 15px;">
         ${ vl.render(PrecoMedioPorAgencia(divWidth - 45)) }
     </div>
 </div>
 
-Podemos ver quer as agencias Rainbow e CloudFly tem um preco medio praticamente identico, porem a FlyingDrops apresentou uma disparidade em relacao as duas outras. qual seria o motivo?
+Como podemos verificar, as agênncias de viagem Rainbow e CloudFly tem um preço médio praticamente idêntico, entretanto a FlyingDrops apresentou uma disparidade em relacao as duas anteriores. Qual seria o motivo?
 
-Para os tipos de passagens aereas temos 3 tipos, Economica, Premium e First Class. Ao analisar o conjunto de dados temos a seguinte distribuicao
+Para os tipos de acomodação relativas às passagens aéreas temos 3 classificações: Econômica, Premium e First Class. Ao analisar o conjunto de dados temos a seguinte distribuicao:
 <div id="QuantidadePorTipo" class="card">
-    <h1>Quantidade de voos por ano</h1>
+    <h1>Quantidade de vôos por ano</h1>
     <div style="width: 100%; margin-top: 15px;">
         ${ vl.render(QuantidadePorTipo(divWidth - 45)) }
     </div>
 </div>
-Com essa visualizacao e possivel observar que o motivo de o valor medio do preco das passagens da agencia FLyingDrops ser mais alto e de que ela e a unica que vende apenas voos de First Class.
+Com a análise dessa visualização é possível observar que o motivo pelo qual o valor médio do preço das passagens da agência FLyingDrops ser mais alto é de que esta empresa é a única a fornecer tarifas apenas para acomodações do tipo "Primeira Classe" (First Class).
 
-Agora vamos analisar a relacao entre distancia e preco das passagens. Consideramos apenas tarifas de voos na classe economica.
+Agora vamos analisar a relacao entre distância percorrida e preço das passagens aéras. 
+
+Consideramos apenas tarifas de vôos na classe Econômica.
 <div id="PrecoDistancia" class="card">
-    <h1>Quantidade de voos por ano</h1>
+    <h1>Quantidade de vôos por ano</h1>
     <div style="width: 100%; margin-top: 15px;">
         ${ vl.render(PrecoDistancia(divWidth - 45)) }
     </div>
 </div>
-E clara a relacao entre distancia e preco pois conseguimos observar que quanto mais longe o voo e o mesmo vale para a relacao entre preco x tempo pois assim como a distancia sao proporcinais, a medida que uma cresce a outra tambem.
+É notável a relação entre distância e preço das tarifas, pois conseguimos observar que quanto maior for a distância entre os trechos dos vôos, maior é o valor das passagens. O mesmo vale para a relação entre preço x tempo, pois assim como a distância, estas outras duas grandezas também são diretamente proporcinais, ou seja, à medida que uma cresce a outra cresce também, seguindo o mesmo comportamento.
 
 
 
 <div id="PrecoTempo" class="card">
-    <h1>Quantidade de voos por ano</h1>
+    <h1>Quantidade de vôos por ano</h1>
     <div style="width: 100%; margin-top: 15px;">
         ${ vl.render(PrecoTempo(divWidth - 45)) }
     </div>
 </div>
+
 # Desings utilizados.
 
 Nesta análise, utilizamos dois tipos de gráficos distintos: o gráfico de barras e o gráfico de linhas.

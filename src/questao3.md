@@ -111,14 +111,14 @@ function ex01(divWidth) {
                     ],
                     mark: {
                         type: "geoshape",
-                        stroke: "#BFBFBF",
+                        stroke: "#FFFFF",
                         strokeWidth: 1
                     },
                     encoding: {
                         color: {
                             field: "count",
                             type: "quantitative",
-                            scale: { scheme: "blues" }
+                            scale: { scheme: "greens" }
                         }
                     }
                 }
@@ -126,125 +126,5 @@ function ex01(divWidth) {
             }
         };
 }
-
-// function ex04() {
-//     const map02 = document.querySelector("#ex04");
-//     const divWidth04 = Generators.width(map02);
-//     map02.style.width = `${divWidth04}px`;
-//     map02.style.height = '400px';
-
-//     const map = new maplibregl.Map({
-//         container: map02,
-//         style: "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
-//         center: [-51.9253, -14.2350],
-//         zoom: 4,
-//     });
-
-//     map.on('load', async () => {
-//         // Load Brazil geoJSON data
-//         const brazilGeoJSON = await FileAttachment("./data/brazil_geo.json").json();
-
-//         // Add Brazil geoJSON as a source
-//         map.addSource('brazil', {
-//             'type': 'geojson',
-//             'data': brazilGeoJSON
-//         });
-
-//         // Add layer for Brazil boundaries
-//         map.addLayer({
-//             'id': 'brazil-boundaries',
-//             'type': 'line',
-//             'source': 'brazil',
-//             'layout': {},
-//             'paint': {
-//                 'line-color': '#888',
-//                 'line-width': 1
-//             }
-//         });
-
-//         // Add layer for flights heatmap
-//         map.addSource('flights', {
-//             'type': 'geojson',
-//             'data': flightGeoJSON
-//         });
-
-//         map.addLayer({
-//             'id': 'flights-heatmap',
-//             'type': 'heatmap',
-//             'source': 'flights',
-//             'maxzoom': 9,
-//             'paint': {
-//                 'heatmap-weight': [
-//                     'interpolate',
-//                     ['linear'],
-//                     ['get', 'count'],
-//                     0,
-//                     0,
-//                     60000,
-//                     1
-//                 ],
-//                 'heatmap-intensity': [
-//                     'interpolate',
-//                     ['linear'],
-//                     ['zoom'],
-//                     0,
-//                     1,
-//                     9,
-//                     3
-//                 ],
-//                 'heatmap-color': [
-//                     'interpolate',
-//                     ['linear'],
-//                     ['heatmap-density'],
-//                     0,
-//                     'rgba(33,102,172,0)',
-//                     0.2,
-//                     'rgb(103,169,207)',
-//                     0.4,
-//                     'rgb(209,229,240)',
-//                     0.6,
-//                     'rgb(253,219,199)',
-//                     0.8,
-//                     'rgb(239,138,98)',
-//                     1,
-//                     'rgb(178,24,43)'
-//                 ],
-//                 'heatmap-radius': [
-//                     'interpolate',
-//                     ['linear'],
-//                     ['zoom'],
-//                     0,
-//                     2,
-//                     9,
-//                     20
-//                 ],
-//                 'heatmap-opacity': [
-//                     'interpolate',
-//                     ['linear'],
-//                     ['zoom'],
-//                     7,
-//                     1,
-//                     9,
-//                     0
-//                 ]
-//             }
-//         });
-//     });
-
-//     map.on('idle', () => {
-//         map.resize();
-//     });
-
-//     map.on('error', (event) => {
-//         console.error('Map error:', event.error);
-//     });
-
-//     return map;
-// }
-
-// ex04();
-
-
-
 
   ```

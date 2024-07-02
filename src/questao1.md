@@ -1,50 +1,50 @@
-# Parte 1: Quantidade de Voos
+# Parte 1: Quantidade de Vôos
 
 <br>
 <br>
-Neste trabalho vamos investigar as tendencias que podemos observar por meio da analise do conjunto de dados apresentado
+Neste trabalho iremos demonstrar a investigação acerca de algumas tendências que podem ser observadas por meio da análise do conjunto de dados apresentado atenriormente.
 
-Em uma primeira analise, podemos observar temos dados de 2019 ate 2023. Com a pandemia do covid-19 queremos saber a variacao na quantidade de voos entre os anos e observar se tivemos uma disparidade por conta desse problema. Com isso em mente temos a seguinte visualizacao:
+Em uma primeira análise, podemos observar que possuímos acesso a dados que estão na faixa de tempo entre os anos de 2019 a 2023. 
 
+Em 2020 o mundo presenciou uma gigantesca calamidade pública: em 11 de março deste mesmo ano, a OMS caracterizou uma pandemia com foco no vírus que recebeu o nome de COVID-19.
+Uma análise interessante que será vista a seguir é aquela que visa constatar se com a disseminação da pandemia do COVID-19 houve algum tipo de variação na quantidade de vôos entre os anos em que o cenário foi de pandemia e observar se tivemos alguma discrepância por conta desse problema. Com isso em mente temos a seguinte visualização:
 
 <div id="VoosPorAno" class="card">
-    <h1>Quantidade de voos por ano</h1>
+    <h2>Quantidade de vôos por ano</h2>
     <div style="width: 100%; margin-top: 15px;">
         ${ vl.render(VoosPorAno(divWidth - 45)) }
     </div>
 </div>
-Como podemos observar, apesar de ser uma suposição valida, o ano de 2019 so não possui menos voos que 2023. Existem diversas possibilidades para explicar esse fenomeno, porem acreditamos que isso seja uma particularidade do conjunto de dados apresentados que não se encaixa com a realidade pois ao observar o conjunto de dados mais atentamente notamos que os voos de 2019 so possuem dados apartir do mes de setembro, portanto vamos comprar a quantidade de voos em cada ano para seu respectivo mes.
+Como podemos observar, apesar de ser uma suposição válida, o ano de 2019 só não possui menos vôos que 2023. Existe diversas possibilidades para explicar esse fenômeno, entretanto acreditamos que isso se deva a uma particularidade do conjunto de dados apresentados que não se encaixa com a realidade pois ao observar o conjunto de dados mais atentamente notamos que os vôos de 2019 só possuem dados à partir do mês de setembro, portanto vamos comparar a quantidade de vôos em cada ano para seu respectivo mês.
 
 <div class="grid grid-cols-2">
     <div id="VoosPorMesAno" class="card grid-colspan-2">
-        <h2 class="title">Quantidade de voos por mes</h2>
+        <h2 class="title">Quantidade de vôos por mês</h2>
         <div style="width: 100%; margin-top: 15px;">
             ${vl.render(VoosPorMesAno(divWidth - 200))}
         </div>
     </div>
 </div>
 
-Com esse  vizualização agora podemos ver que pelo menos para os meses os quais 2019 tem voos foi ele que obteve a maior quantidade de voos. Porem ao observarmos os meses outros meses vemos que em sua maiora(desconsiderando 2019) o ano o qual temos a maior quantidade de voos para cada mes e o ano de  2020. Para os primeiros meses do ano como de janeiro ate pelo menos marco ate que faz sentido pois a pandemia comecou por volta de abril/maio mas os meses seguintes continuamos a observar que o ano de 2020 teve a maior quantidade de voos.
+Com essa vizualização agora podemos notar que pelo menos para os meses aos quais 2019 teve vôos foi este ano que obteve a maior quantidade de trechos de deslocamento. Poéem ao observarmos os outros meses notamos que em sua maiora (desconsiderando o ano de 2019) o ano cujo qual observamos a maior quantidade de vôos para cada mês é justamento 2020. Para os primeiros meses do ano, como de janeiro até pelo menos março, faz um pouco de sentido já que a pandemia foi notificada pela OMS em março de 2020. Entretanto, nos meses seguintes continuamos a notar que o ano de 2020 teve a maior quantidade de vôos registrados.
 
-# Quantidade de Voos por classe
-Agora queremos saber a distribuicao de tipo de voo(economica, primium ou primeira classe) em realcao aos voos de cada ano presente no conjunto de dados.
+# Quantidade de Vôos por classe
+Agora queremos descobrir a distribuição de acomodações de vôo (Classe Econômica, Premium ou Primeira Classe) em realação aos vôos de cada ano presente no conjunto de dados.
 
 <div class="grid grid-cols-2">
     <div id="TiposDeTarifaPorAno" class="card grid-colspan-2">
-        <h2 class="title">Quantidade de Voos em cada categoria</h2>
+        <h2 class="title">Quantidade de vôos em cada categoria</h2>
         <div style="width: 100%; margin-top: 15px;">
             ${vl.render(TiposDeTarifaPorAno(divWidth - 200))}
         </div>
     </div>
 </div>
 
-Uma dominancia dos voos de primeira classe foi encotntrada, em todos os anos tivemos mais voos de primeira classe do que de outros meios separados,
-
-
+É notável uma predominância dos vôos atrelados a Primeira Classe. Em todos os anos é possível observar o maior índice de recorrência de vôos sendo atribuído aqueles de Primeira Classe em comparação a qualquer outro tipo de acomodação.
 
 <div class="grid grid-cols-2">
     <div id="VoosPorAgencia" class="card grid-colspan-2">
-        <h2 class="title">Quantidade de Voos por agencia</h2>
+        <h2 class="title">Quantidade de vôos por agência</h2>
         <div style="width: 100%; margin-top: 15px;">
             ${vl.render(VoosPorAgencia(divWidth - 200))}
         </div>
@@ -53,10 +53,9 @@ Uma dominancia dos voos de primeira classe foi encotntrada, em todos os anos tiv
 
 
 
-
 <div class="grid grid-cols-2">
     <div id="VoosPorAnoPorAgencia" class="card grid-colspan-2">
-        <h2 class="title">Quantidade de Voos por agencia por ano</h2>
+        <h2 class="title">Quantidade de vôos por agência por ano</h2>
         <div style="width: 100%; margin-top: 15px;">
             ${vl.render(VoosPorAnoPorAgencia(divWidth - 200))}
         </div>
@@ -159,7 +158,6 @@ let MesesAgregadosArray = flightCountsPerYearMonthArray.reduce((acc, voo) => {
 console.log(MesesAgregadosArray);
 
 
-
 let flightTypeCountsByYear = {};
 
 dataSet.forEach(voo => {
@@ -240,15 +238,12 @@ console.log(agencyYearFlightCountsArray);
 
 
 
-
 ```
 
 
 
 
-
 ```js
-
 
 function VoosPorAno (divWidth) {
     return {
@@ -317,7 +312,6 @@ function VoosPorAno (divWidth) {
         };
     }
 
-
 function VoosPorMesAno(divWidth) {
     return {
         spec: {
@@ -361,7 +355,6 @@ function VoosPorMesAno(divWidth) {
     };
 }
 
-
 function VoosPorAgencia(divWidth) {
     return {
         spec: {
@@ -386,7 +379,6 @@ function VoosPorAgencia(divWidth) {
         }
     };
 }
-
 
 
 function VoosPorAnoPorAgencia(divWidth) {
@@ -431,6 +423,5 @@ function VoosPorAnoPorAgencia(divWidth) {
         }
     };
 }
-
 
 ```

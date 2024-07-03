@@ -54,6 +54,8 @@ Agora queremos descobrir a distribuição de acomodações de vôo (Classe Econ�
 
 Ao agrupar os voos de classe econômica e premium e compará-los com a quantidade de voos na Primeira Classe, conseguimos finalmente notar uma predominância das outras classes. Optamos por agrupar porque, na realidade, a disparidade de preço e de público entre a premium e a primeira classe é bem maior do que entre a classe econômica e premium. Portanto, agora podemos observar uma distribuição de dados mais compatível com a realidade do mercado aéreo.
 
+Com o objetivo de aprofundar nossa compreensão sobre o público-alvo de cada agência de viagem, decidimos também analisar como cada agência distribuiu a venda de voos por classe. Essa análise não apenas nos permite entender melhor os padrões de consumo dos clientes de cada agência, mas também oferece insights valiosos sobre as preferências de viagem, o perfil socioeconômico dos passageiros e até mesmo estratégias de marketing que podem ser mais eficazes para cada segmento de mercado. Ao examinar detalhadamente esses dados, buscamos não apenas quantificar as vendas por classe, mas também contextualizar essas informações dentro do panorama competitivo do setor aéreo, ajudando a orientar decisões estratégicas futuras das agências de viagem.
+
 <div class="grid grid-cols-2">
     <div id="VoosPorAgencia" class="card grid-colspan-2">
         <h2 class="title">Quantidade de vôos por agência</h2>
@@ -63,6 +65,7 @@ Ao agrupar os voos de classe econômica e premium e compará-los com a quantidad
     </div>
 </div>
 
+Apartir dessa vizualizacao podemos          
 
 
 <div class="grid grid-cols-2">
@@ -73,6 +76,8 @@ Ao agrupar os voos de classe econômica e premium e compará-los com a quantidad
         </div>
     </div>
 </div>
+
+Com os gráficos acima, há clara diferença entre os perfis das agências aereas. As agencias 'cloudfly'  e 'rainbow' possuem publico alvo similares, enquanto que 'flyingdrops' tem cenário distinto. Como 'flyingdrops' possui apenas voos de firstclass, que são muito mais caros, apenas uma parcela da população possui condições de utiliza-lá, portanto, isso justifica a quantidade de voos muito menor em relação às outras duas agencias presentes no dataset. Por outro lado, as agências "cloudfly" e "rainbow" possuem quantidade de voos, praticamente, iguais e disponibilizam todos os tipos de classes para seus clientes, desde a mais barata até a mais cara, o que justifica terem uma quantidade de voos muito superior a 'flyingdrops', pois oferecem voos acessiveis aos mais diferentes niveis de poder aquisitivo da população 
 
 ```js 
 const divWidth = Generators.width(document.querySelector("#VoosPorAno"));

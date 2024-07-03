@@ -40,7 +40,19 @@ Agora queremos descobrir a distribuição de acomodações de vôo (Classe Econ�
     </div>
 </div>
 
-É notável uma predominância dos vôos atrelados a Primeira Classe. Em todos os anos é possível observar o maior índice de recorrência de vôos sendo atribuído aqueles de Primeira Classe em comparação a qualquer outro tipo de acomodação.
+É notável uma predominância dos vôos atrelados a Primeira Classe. Em todos os anos é possível observar o maior índice de recorrência de vôos sendo atribuído aqueles de Primeira Classe em comparação a qualquer outro tipo de classe é possivel que o  publico alvo das agências de vôo presentes no conjunto de dados seja de uma classe econômica mais elevada. 
+
+
+<div class="grid grid-cols-2">
+    <div id="EconoPremium" class="card grid-colspan-2">
+        <h2 class="title">Voos Primeira Classe x Outros</h2>
+        <div style="width: 100%; margin-top: 15px;">
+            ${vl.render(EconoPremium(divWidth - 200))}
+        </div>
+    </div>
+</div>
+
+Ao agrupar os voos de classe econômica e premium e compará-los com a quantidade de voos na Primeira Classe, conseguimos finalmente notar uma predominância das outras classes. Optamos por agrupar porque, na realidade, a disparidade de preço e de público entre a premium e a primeira classe é bem maior do que entre a classe econômica e premium. Portanto, agora podemos observar uma distribuição de dados mais compatível com a realidade do mercado aéreo.
 
 <div class="grid grid-cols-2">
     <div id="VoosPorAgencia" class="card grid-colspan-2">
@@ -193,6 +205,17 @@ let flightTypeCountsByYearArray = Object.values(flightTypeCountsByYear).map(item
     };
 });
 
+let flightEconoPremiumEFirst = Object.values(flightTypeCountsByYear).map(item => {
+    return {
+        year: item.year,
+        econoPremium: item.economic + item.premium,
+        firstClass: item.firstClass
+    };
+})
+
+console.log(flightEconoPremiumEFirst)
+
+
 let agencyFlightCounts = {};
 
 dataSet.forEach(voo => {
@@ -232,7 +255,7 @@ dataSet.forEach(voo => {
 // Convert the object to an array if needed
 let agencyYearFlightCountsArray = Object.values(agencyYearFlightCounts);
 
-console.log(agencyYearFlightCountsArray);
+console.log(flightTypeCountsByYearArray)
 
 
 
@@ -277,6 +300,49 @@ function VoosPorAno (divWidth) {
                     values: flightTypeCountsByYearArray
                 },
                 repeat: { "layer": ["economic", "premium", "firstClass"] },
+                spec: {
+                    "mark": "bar",
+                    "encoding": {
+                        "x": {
+                            "field": "year",
+                            "type": "ordinal",
+                            "bandwidth": 10.8 
+                        },
+                        "y": {
+                            "aggregate": "sum",
+                            "field": { "repeat": "layer" },
+                            "type": "quantitative",
+                            "title": "Quantidade de Voos"
+                        },
+                        "color": { "datum": { "repeat": "layer" }, "title": "Streaming Chart", scale: { "range":["#1DB954", "#FF0000", "#8A2BE2"] } },
+                        "xOffset": { "datum": { "repeat": "layer" }
+                        }
+                    },
+                    "config": {
+                        "mark": { "invalid": null },
+                        "scale": { "y": { "zero": true } },
+                        "axis": { "title": "Título da Legenda Lateral" }
+                    },
+                    "transform": [
+                        {
+                            "stack": "y",
+                            "as": ["y_start", "y_end"],
+                            "groupby": ["quantidade"]
+                        }
+                    ]
+                }
+            }
+        };
+    }
+
+ function EconoPremium(divWidth) {
+        return {
+            spec: {
+                width: divWidth,
+                data: {
+                    values: flightEconoPremiumEFirst
+                },
+                repeat: { "layer": ["econoPremium", "firstClass"] },
                 spec: {
                     "mark": "bar",
                     "encoding": {

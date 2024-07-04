@@ -50,7 +50,25 @@ Agora queremos descobrir a distribuição de acomodações de vôo (Classe Econ�
     </div>
 </div>
 
+<<<<<<< HEAD:src/questao1.md
 É notável uma predominância dos vôos atrelados a Primeira Classe em todos os anos analizados, seguido por um empate técnico entre as outras classes ao longo do mesmo período de tempo, tendo 2020 como o ano com maiores taxas das 3 categorias. 
+=======
+É notável uma predominância dos vôos atrelados a Primeira Classe. Em todos os anos é possível observar o maior índice de recorrência de vôos sendo atribuído aqueles de Primeira Classe em comparação a qualquer outro tipo de classe é possivel que o  publico alvo das agências de vôo presentes no conjunto de dados seja de uma classe econômica mais elevada. 
+
+
+<div class="grid grid-cols-2">
+    <div id="EconoPremium" class="card grid-colspan-2">
+        <h2 class="title">Voos Primeira Classe x Outros</h2>
+        <div style="width: 100%; margin-top: 15px;">
+            ${vl.render(EconoPremium(divWidth - 200))}
+        </div>
+    </div>
+</div>
+
+Ao agrupar os voos de classe econômica e premium e compará-los com a quantidade de voos na Primeira Classe, conseguimos finalmente notar uma predominância das outras classes. Optamos por agrupar porque, na realidade, a disparidade de preço e de público entre a premium e a primeira classe é bem maior do que entre a classe econômica e premium. Portanto, agora podemos observar uma distribuição de dados mais compatível com a realidade do mercado aéreo.
+
+Com o objetivo de aprofundar nossa compreensão sobre o público-alvo de cada agência de viagem, decidimos também analisar como cada agência distribuiu a venda de voos por classe. Essa análise não apenas nos permite entender melhor os padrões de consumo dos clientes de cada agência, mas também oferece insights valiosos sobre as preferências de viagem, o perfil socioeconômico dos passageiros e até mesmo estratégias de marketing que podem ser mais eficazes para cada segmento de mercado. Ao examinar detalhadamente esses dados, buscamos não apenas quantificar as vendas por classe, mas também contextualizar essas informações dentro do panorama competitivo do setor aéreo, ajudando a orientar decisões estratégicas futuras das agências de viagem.
+>>>>>>> 6fcee9da42c07f9db66afc0ab2f0dfb08e69d748:src/parte1.md
 
 <div class="grid grid-cols-2">
     <div id="VoosPorAgencia" class="card grid-colspan-2">
@@ -61,10 +79,14 @@ Agora queremos descobrir a distribuição de acomodações de vôo (Classe Econ�
     </div>
 </div>
 
+<<<<<<< HEAD:src/questao1.md
 Neste ponto da visualização é possível notar qual agência possui o maior indice de incidência em relação a emissão de passagens aéreas. 
 
 Temos um aparente impate técnico entre as empresas CloudFly e Rainbow, e aquela com menor taxa de incidências de vôo foi a Flying Drops.
 
+=======
+Apartir dessa vizualizacao podemos          
+>>>>>>> 6fcee9da42c07f9db66afc0ab2f0dfb08e69d748:src/parte1.md
 
 
 <div class="grid grid-cols-2">
@@ -76,9 +98,13 @@ Temos um aparente impate técnico entre as empresas CloudFly e Rainbow, e aquela
     </div>
 </div>
 
+<<<<<<< HEAD:src/questao1.md
 Com o auxílio do gráfico é possível visualizar com mais clareza que a quantidade de vôos por agência tem valores muito próximos entre as agências CloudFy e Rainbow, a única diferença é que a contagem da quantidade de vôos da CloudFy começa a ser verificada um pouco antes de 2019 e a contagem relativa a Rainbow começa a ser verificada por volta do fim do primeiro terço de 2019. A diferença é basicamente temporal em relação ao início de verificação dos dados.
 
 Já a agência FlyingDrops tem uma verificação da quantidade de vôos por ano mais tímida em comparação com as citadas anteriormente.
+=======
+Com os gráficos acima, há clara diferença entre os perfis das agências aereas. As agencias 'cloudfly'  e 'rainbow' possuem publico alvo similares, enquanto que 'flyingdrops' tem cenário distinto. Como 'flyingdrops' possui apenas voos de firstclass, que são muito mais caros, apenas uma parcela da população possui condições de utiliza-lá, portanto, isso justifica a quantidade de voos muito menor em relação às outras duas agencias presentes no dataset. Por outro lado, as agências "cloudfly" e "rainbow" possuem quantidade de voos, praticamente, iguais e disponibilizam todos os tipos de classes para seus clientes, desde a mais barata até a mais cara, o que justifica terem uma quantidade de voos muito superior a 'flyingdrops', pois oferecem voos acessiveis aos mais diferentes niveis de poder aquisitivo da população 
+>>>>>>> 6fcee9da42c07f9db66afc0ab2f0dfb08e69d748:src/parte1.md
 
 ```js 
 const divWidth = Generators.width(document.querySelector("#VoosPorAno"));
@@ -211,6 +237,17 @@ let flightTypeCountsByYearArray = Object.values(flightTypeCountsByYear).map(item
     };
 });
 
+let flightEconoPremiumEFirst = Object.values(flightTypeCountsByYear).map(item => {
+    return {
+        year: item.year,
+        econoPremium: item.economic + item.premium,
+        firstClass: item.firstClass
+    };
+})
+
+console.log(flightEconoPremiumEFirst)
+
+
 let agencyFlightCounts = {};
 
 dataSet.forEach(voo => {
@@ -250,7 +287,7 @@ dataSet.forEach(voo => {
 // Convert the object to an array if needed
 let agencyYearFlightCountsArray = Object.values(agencyYearFlightCounts);
 
-console.log(agencyYearFlightCountsArray);
+console.log(flightTypeCountsByYearArray)
 
 
 
@@ -295,6 +332,49 @@ function VoosPorAno (divWidth) {
                     values: flightTypeCountsByYearArray
                 },
                 repeat: { "layer": ["economic", "premium", "firstClass"] },
+                spec: {
+                    "mark": "bar",
+                    "encoding": {
+                        "x": {
+                            "field": "year",
+                            "type": "ordinal",
+                            "bandwidth": 10.8 
+                        },
+                        "y": {
+                            "aggregate": "sum",
+                            "field": { "repeat": "layer" },
+                            "type": "quantitative",
+                            "title": "Quantidade de Voos"
+                        },
+                        "color": { "datum": { "repeat": "layer" }, "title": "Streaming Chart", scale: { "range":["#1DB954", "#FF0000", "#8A2BE2"] } },
+                        "xOffset": { "datum": { "repeat": "layer" }
+                        }
+                    },
+                    "config": {
+                        "mark": { "invalid": null },
+                        "scale": { "y": { "zero": true } },
+                        "axis": { "title": "Título da Legenda Lateral" }
+                    },
+                    "transform": [
+                        {
+                            "stack": "y",
+                            "as": ["y_start", "y_end"],
+                            "groupby": ["quantidade"]
+                        }
+                    ]
+                }
+            }
+        };
+    }
+
+ function EconoPremium(divWidth) {
+        return {
+            spec: {
+                width: divWidth,
+                data: {
+                    values: flightEconoPremiumEFirst
+                },
+                repeat: { "layer": ["econoPremium", "firstClass"] },
                 spec: {
                     "mark": "bar",
                     "encoding": {

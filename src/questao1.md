@@ -2,7 +2,8 @@
 
 <br>
 <br>
-Neste trabalho iremos demonstrar a investigação acerca de algumas tendências que podem ser observadas por meio da análise do conjunto de dados apresentado atenriormente.
+
+Neste trabalho iremos demonstrar o resultado de uma investigação acerca de algumas tendências que podem ser observadas por meio da análise do conjunto de dados apresentado atenriormente.
 
 Em uma primeira análise, podemos observar que possuímos acesso a dados que estão na faixa de tempo entre os anos de 2019 a 2023. 
 
@@ -10,57 +11,74 @@ Em 2020 o mundo presenciou uma gigantesca calamidade pública: em 11 de março d
 Uma análise interessante que será vista a seguir é aquela que visa constatar se com a disseminação da pandemia do COVID-19 houve algum tipo de variação na quantidade de vôos entre os anos em que o cenário foi de pandemia e observar se tivemos alguma discrepância por conta desse problema. Com isso em mente temos a seguinte visualização:
 
 <div id="VoosPorAno" class="card">
-    <h2>Quantidade de vôos por ano</h2>
+    <h1>Quantidade de vôos por ano</h1>
     <div style="width: 100%; margin-top: 15px;">
         ${ vl.render(VoosPorAno(divWidth - 45)) }
     </div>
 </div>
-Como podemos observar, apesar de ser uma suposição válida, o ano de 2019 só não possui menos vôos que 2023. Existe diversas possibilidades para explicar esse fenômeno, entretanto acreditamos que isso se deva a uma particularidade do conjunto de dados apresentados que não se encaixa com a realidade pois ao observar o conjunto de dados mais atentamente notamos que os vôos de 2019 só possuem dados à partir do mês de setembro, portanto vamos comparar a quantidade de vôos em cada ano para seu respectivo mês.
+
+Tendo como ponto de partida o ano de 2019 é possível constatar que houve uma alta significativa na quantidade de vôos realizados até o ano de 2020, passando de aproximadamente 40.000 para algo próximo a 120.000 vôos, que é praticamente o triplo de ocorrências de viagens. Entretanto, à partir de 2020, ano em que foi deflagrada a pandemia do COVID-19, essa alta sofreu um ponto de inflexão que seguiu tendo uma queda constante até o ano de 2023, ano em que houve o controle do vírus causador da pandemia. 
+
+Como podemos observar, apesar de ser uma suspeita válida, o ano de 2019 só não possui menos vôos que 2023. Existe diversas possibilidades para explicar esse fenômeno, entretanto acreditamos que isso se deva a uma particularidade do conjunto de dados apresentados que não se encaixa com a realidade pois ao observar o conjunto de dados mais atentamente notamos que os vôos de 2019 só possuem dados à partir do mês de setembro, portanto vamos comparar a quantidade de vôos em cada ano para seu respectivo mês.
 
 <div class="grid grid-cols-2">
     <div id="VoosPorMesAno" class="card grid-colspan-2">
-        <h2 class="title">Quantidade de vôos por mês</h2>
+        <h1 class="title">Quantidade de vôos por mês</h1>
         <div style="width: 100%; margin-top: 15px;">
             ${vl.render(VoosPorMesAno(divWidth - 200))}
         </div>
     </div>
 </div>
 
-Com essa vizualização agora podemos notar que pelo menos para os meses aos quais 2019 teve vôos foi este ano que obteve a maior quantidade de trechos de deslocamento. Poéem ao observarmos os outros meses notamos que em sua maiora (desconsiderando o ano de 2019) o ano cujo qual observamos a maior quantidade de vôos para cada mês é justamento 2020. Para os primeiros meses do ano, como de janeiro até pelo menos março, faz um pouco de sentido já que a pandemia foi notificada pela OMS em março de 2020. Entretanto, nos meses seguintes continuamos a notar que o ano de 2020 teve a maior quantidade de vôos registrados.
+Com a visualização deste gráfico podemos notar que pelo menos para este conjunto de dados, apenas à partid do mês de setembro (09) é que é possível acompanhar a relação da quantidade de vôos por mês para o ano de 2019, que por sinal liderou na quantidade em relação ao mesmo período por mês frente aos demais anos analisados.
+
+Outra informação importante que é possível ser vista no gráfico é que os anos cujos meses tiveram as menores quantidades de vôos realizados são justamente o primeiro e último ano de análise: 2019 e 2023 respectivamente, tendo 2019 ainda como o ano com menor quantidade de vôos realizados, já que a incidência dos mesmos pode ser percebida apenas no último terço do ano.
+
+Em contrapartida, o ano em que houve a maior incidência de vôos ao longo de todos os meses foi o ano de 2020, seguido por 2021 e 2022. Lembrando que neste caso o foco é com relação a quantidade de vôos por meses do ano.
+
+Porém, ao observarmos os outros meses notamos que em sua maiora (desconsiderando o ano de 2019) o ano cujo qual observamos a maior quantidade de vôos para cada mês é justamento 2020. Para os primeiros meses do ano, como de janeiro até pelo menos março, faz um pouco de sentido já que a pandemia foi notificada pela OMS em março de 2020. Entretanto, nos meses seguintes continuamos a notar que o ano de 2020 teve a maior quantidade de vôos registrados.
 
 # Quantidade de Vôos por classe
-Agora queremos descobrir a distribuição de acomodações de vôo (Classe Econômica, Premium ou Primeira Classe) em realação aos vôos de cada ano presente no conjunto de dados.
+Agora queremos descobrir a distribuição de acomodações de vôo (Classe Econômica, Premium ou Primeira Classe) em realação aos vôos de cada ano presente no conjunto de dados, para tentar entender melhor que tipo de viagem foi mais requisitada neste período por parte dos passageiros.
 
 <div class="grid grid-cols-2">
     <div id="TiposDeTarifaPorAno" class="card grid-colspan-2">
-        <h2 class="title">Quantidade de vôos em cada categoria</h2>
+        <h1 class="title">Quantidade de vôos em cada categoria</h1>
         <div style="width: 100%; margin-top: 15px;">
             ${vl.render(TiposDeTarifaPorAno(divWidth - 200))}
         </div>
     </div>
 </div>
 
-É notável uma predominância dos vôos atrelados a Primeira Classe. Em todos os anos é possível observar o maior índice de recorrência de vôos sendo atribuído aqueles de Primeira Classe em comparação a qualquer outro tipo de acomodação.
+É notável uma predominância dos vôos atrelados a Primeira Classe em todos os anos analizados, seguido por um empate técnico entre as outras classes ao longo do mesmo período de tempo, tendo 2020 como o ano com maiores taxas das 3 categorias. 
 
 <div class="grid grid-cols-2">
     <div id="VoosPorAgencia" class="card grid-colspan-2">
-        <h2 class="title">Quantidade de vôos por agência</h2>
+        <h1 class="title">Quantidade de vôos por agência</h1>
         <div style="width: 100%; margin-top: 15px;">
             ${vl.render(VoosPorAgencia(divWidth - 200))}
         </div>
     </div>
 </div>
 
+Neste ponto da visualização é possível notar qual agência possui o maior indice de incidência em relação a emissão de passagens aéreas. 
+
+Temos um aparente impate técnico entre as empresas CloudFly e Rainbow, e aquela com menor taxa de incidências de vôo foi a Flying Drops.
+
 
 
 <div class="grid grid-cols-2">
     <div id="VoosPorAnoPorAgencia" class="card grid-colspan-2">
-        <h2 class="title">Quantidade de vôos por agência por ano</h2>
+        <h1 class="title">Quantidade de vôos por agência por ano</h1>
         <div style="width: 100%; margin-top: 15px;">
             ${vl.render(VoosPorAnoPorAgencia(divWidth - 200))}
         </div>
     </div>
 </div>
+
+Com o auxílio do gráfico é possível visualizar com mais clareza que a quantidade de vôos por agência tem valores muito próximos entre as agências CloudFy e Rainbow, a única diferença é que a contagem da quantidade de vôos da CloudFy começa a ser verificada um pouco antes de 2019 e a contagem relativa a Rainbow começa a ser verificada por volta do fim do primeiro terço de 2019. A diferença é basicamente temporal em relação ao início de verificação dos dados.
+
+Já a agência FlyingDrops tem uma verificação da quantidade de vôos por ano mais tímida em comparação com as citadas anteriormente.
 
 ```js 
 const divWidth = Generators.width(document.querySelector("#VoosPorAno"));

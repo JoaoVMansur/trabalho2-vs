@@ -1,4 +1,4 @@
-# Parte 2: Preço dos Vôos.
+# Parte 2: Preço dos Voos.
 <br>
 <br>
 <br>
@@ -9,7 +9,7 @@ Em primeiro lugar gostaríamos de analisar a evolução do preço médio das pas
 
 
 <div id="PrecoMedioPorAno" class="card">
-    <h1>Quantidade de voos por ano</h1>
+    <h1>Preço médio das passagem ao longo dos anos</h1>
     <div style="width: 100%; margin-top: 15px;">
         ${ vl.render(PrecoMedioPorAno(divWidth - 45)) }
     </div>
@@ -19,11 +19,11 @@ Com base nesta visualização, foi possível observar uma certa correspondência
 
 # Agências
 
-Neste trecho iremos focar nossa observação em relação ao preço médio das tarifas de vôo em relação as agências de viagem.
+Neste trecho iremos focar nossa observação em relação ao preço médio das tarifas de Voo em relação as agências de viagem.
 
 
 <div id="PrecoMedioPorAgencia" class="card">
-    <h1>Quantidade de vôos por ano</h1>
+    <h1>Preço médio por agência</h1>
     <div style="width: 100%; margin-top: 15px;">
         ${ vl.render(PrecoMedioPorAgencia(divWidth - 45)) }
     </div>
@@ -31,30 +31,33 @@ Neste trecho iremos focar nossa observação em relação ao preço médio das t
 
 Como podemos verificar, as agênncias de viagem Rainbow e CloudFly tem um preço médio praticamente idêntico, entretanto a FlyingDrops apresentou uma disparidade em relacao as duas anteriores. Qual seria o motivo?
 
-Para os tipos de acomodação relativas às passagens aéreas temos 3 classificações: Econômica, Premium e First Class. Ao analisar o conjunto de dados temos a seguinte distribuicao:
-<div id="QuantidadePorTipo" class="card">
-    <h1>Quantidade de vôos por ano</h1>
+
+Como mostrado na parte 1 deste trabalho, verificamos que a agência FlyingDrops vendeu apenas passagens na Primeira Classe durante todo o período analisado. Isso explica o motivo de ela ter um preço médio superior ao das outras agências. No entanto, após aquela análise, surgiu a dúvida se a saúde financeira da agência seria afetada, já que o número de passagens aéreas vendidas pela FlyingDrops foi significativamente inferior em comparação às outras duas agências. Agora, com essa visualização, podemos ver que pelo menos o preço médio das passagens vendidas pela agência foi satisfatório. No entanto, não podemos depender apenas do preço médio; também queremos saber sobre o faturamento total das agências.
+
+<div id="GanhoTotalAgencias" class="card">
+    <h1>Faturamento bruto por agência</h1>
     <div style="width: 100%; margin-top: 15px;">
-        ${ vl.render(QuantidadePorTipo(divWidth - 45)) }
+        ${ vl.render(GanhoTotalAgencias(divWidth - 45)) }
     </div>
 </div>
-Com a análise dessa visualização é possível observar que o motivo pelo qual o valor médio do preço das passagens da agência FLyingDrops ser mais alto é de que esta empresa é a única a fornecer tarifas apenas para acomodações do tipo "Primeira Classe" (First Class).
+
+Podemos observar que, apesar do ticket médio mais alto da agência FlyingDrops, seu faturamento foi menos da metade comparado às outras duas agências. Isso sugere que, apesar de se concentrar no público A+++, que geralmente busca serviços de primeira classe e preço mais elevado, a FlyingDrops enfrentou desafios significativos em termos de volume de vendas. Essa disparidade indica que, enquanto pode ter alcançado sucesso entre um segmento mais exclusivo e lucrativo em termos individuais, o impacto total no faturamento foi inferior ao das suas concorrentes.
+
+# Distancia e Duração
 
 Agora vamos analisar a relacao entre distância percorrida e preço das passagens aéras. 
 
-Consideramos apenas tarifas de vôos na classe Econômica.
+Consideramos apenas tarifas de Voos na classe Econômica.
 <div id="PrecoDistancia" class="card">
-    <h1>Quantidade de vôos por ano</h1>
+    <h1>Preço x Distancia</h1>
     <div style="width: 100%; margin-top: 15px;">
         ${ vl.render(PrecoDistancia(divWidth - 45)) }
     </div>
 </div>
-É notável a relação entre distância e preço das tarifas, pois conseguimos observar que quanto maior for a distância entre os trechos dos vôos, maior é o valor das passagens. O mesmo vale para a relação entre preço x tempo, pois assim como a distância, estas outras duas grandezas também são diretamente proporcinais, ou seja, à medida que uma cresce a outra cresce também, seguindo o mesmo comportamento.
-
-
+A relação entre distância e preço das tarifas é evidente, pois observamos que quanto maior a distância entre os trechos dos voos, maior é o valor das passagens. Essa relação também se aplica à comparação entre preço e tempo de voo, onde ambas as grandezas são diretamente proporcionais: à medida que uma aumenta, a outra também aumenta, seguindo o mesmo padrão de comportamento.
 
 <div id="PrecoTempo" class="card">
-    <h1>Quantidade de vôos por ano</h1>
+    <h1>Preço x Tempo de Voo</h1>
     <div style="width: 100%; margin-top: 15px;">
         ${ vl.render(PrecoTempo(divWidth - 45)) }
     </div>
@@ -62,13 +65,13 @@ Consideramos apenas tarifas de vôos na classe Econômica.
 
 # Desings utilizados.
 
-Nesta análise, utilizamos dois tipos de gráficos distintos: o gráfico de barras e o gráfico de linhas.
+Nesta análise, utilizamos três tipos de gráficos distintos: o gráfico de barras, o gráfico de linhas e o scatterplot.
 
-Para visualizar o processo de filtragem e apresentar os dados após a manipulação, decidimos utilizar um gráfico de barras, uma escolha eficaz para uma representação visual clara da quantidade de músicas ao longo dos anos analisados. As barras verticais coloridas funcionam como marcadores, cada uma representando a quantidade de músicas em seus respectivos anos. Quanto aos canais visuais, a altura das barras reflete a quantidade de músicas em cada ano, enquanto o eixo x denota os anos e o eixo y representa a contagem ou número de músicas.
+Para os gráficos de barras, utilizamos para mostrar o preço médio das passagens vendidas por agência durante todo o período e o faturamento bruto total das agências. Para os marcadores, utilizamos barras verticais em que a altura representa o preço médio da passagem e o faturamento total das agências, enquanto o eixo y contém as agências representadas no conjunto de dados.
 
-Para acompanhar a variação do top 10 das músicas e dos artistas ao longo do tempo, optamos por empregar o gráfico de linhas. Essa escolha nos permite visualizar de forma clara e intuitiva as mudanças nos dados ao longo dos anos, fornecendo insights valiosos sobre as tendências e padrões que emergem nesse período.Nosso gráfico de linhas utiliza uma linha contínua como marcador, destacando a mudança ao longo do tempo nos dados do top 10. Quanto aos canais visuais, o eixo x, assim como no gráfico de barras, representa os anos. Já a altura da linha representa a quantidade de streams no respectivo ano, permitindo uma compreensão imediata da evolução desses dados ao longo do tempo.
+O gráfico de linhas foi utilizado para mostrar a tendência do preço médio geral das passagens ao longo do período presente no conjunto de dados. O marcador é uma linha que representa o eixo y do gráfico, onde temos o preço médio da passagem ao longo dos anos presente no eixo x.
 
-
+O scatterplot foi escolhido para representar a correlação entre duas variáveis, sendo ele utilizado em dois casos: na relação Preço x Distância e na relação Preço x Tempo de voo. Para os marcadores, utilizamos círculos que se posicionam no gráfico de acordo com a sua relação entre as características citadas. Quanto maior o preço, mais alto no eixo y o círculo será posicionado; e quanto maior o tempo ou a distância do voo, mais à direita do gráfico o círculo será posicionado.
 
 ```js
 const divWidth = Generators.width(document.querySelector("#PrecoMedioPorAno"));
@@ -128,7 +131,17 @@ const avgPricesByAgency = Object.keys(agencyData).reduce((acc, agency) => {
     return acc;
 }, []);
 
-console.log(avgPricesByAgency);
+const TotalEarnings = Object.keys(agencyData).reduce((acc, agency) => {
+    acc.push({
+        agencia: agency,
+        totalEarnings: agencyData[agency].sum.toFixed(2), // Rounding to 2 decimal places if needed
+        quantidade: agencyData[agency].count
+    });
+    return acc;
+}, []);
+
+console.log("GANHO TOTALLLL")
+console.log(TotalEarnings);
 
 const tipoVooAgencia = dataSet.reduce((acc, item) => {
     const agency = item.agency;
@@ -222,6 +235,30 @@ function PrecoMedioPorAgencia(divWidth) {
                 },
                 "y": {
                     "field": "preco",
+                    "type": "quantitative",
+                },
+            
+            }
+        }
+    };
+}
+function GanhoTotalAgencias(divWidth) {
+    return {
+        spec: {
+            width: divWidth,
+            data: {
+                values: TotalEarnings
+            },
+            "mark": {
+                "type": "bar"
+            },
+            "encoding": {
+                "x": {
+                    "field": "agencia",
+                    "type": "nominal",
+                },
+                "y": {
+                    "field": "totalEarnings",
                     "type": "quantitative",
                 },
             

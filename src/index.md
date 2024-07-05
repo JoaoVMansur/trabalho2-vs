@@ -14,4 +14,4 @@ view(Inputs.table(dataSet));
 
 ```
 # Observações: 
-Com base no conjunto de dados exposto acima é possível visualizar as seguintes informações pertinentes acerca desta análise: O código da viagem, o código do usuário,  origem e destino dos vôos, o tipo de classe em que o passageiro decidiu ser acomodado, o preço relativo a cada trecho realizado, o tempo de deslocamento, a distância percorrida em cada viagem, qual foi a agência que realizou a venda da passagem aérea e, por fim, a data vôo.
+Com base no conjunto de dados exposto acima é possível visualizar as seguintes informações pertinentes acerca desta análise: O código da viagem, o código do usuário,  origem e destino dos vôos, o tipo de classe em que o passageiro decidiu ser acomodado, o preço relativo a cada trecho realizado, o tempo de deslocamento, a distância percorrida em cada viagem, qual foi a agência que realizou a venda da passagem aérea e, por fim, a data do vôo.

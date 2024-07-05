@@ -1,4 +1,4 @@
-# Parte 1: Quantidade de Voos
+# Parte 1: Quantidade de Vôos
 
 <br>
 <br>
@@ -9,7 +9,7 @@
 
 Em 2020, o mundo presenciou uma gigantesca calamidade pública: em 11 de março deste ano, a OMS caracterizou uma pandemia com foco no vírus que recebeu o nome de COVID-19. Uma análise interessante que será vista a seguir visa constatar se, com a disseminação da pandemia de COVID-19, houve algum tipo de variação na quantidade de voos entre os anos em que o cenário foi de pandemia e observar se tivemos alguma discrepância por conta desse problema. Com isso em mente, temos a seguinte visualização:
 <div id="VoosPorAno" class="card">
-    <h1>Quantidade de Voos por ano</h1>
+    <h1>Quantidade de Vôos por ano</h1>
     <div style="width: 100%; margin-top: 15px;">
         ${ vl.render(VoosPorAno(divWidth - 45)) }
     </div>
@@ -20,7 +20,7 @@ Tendo como ponto de partida o ano de 2019, é possível constatar que houve uma 
 Como podemos observar, apesar de ser uma suspeita válida, o ano de 2019 só não possui menos voos que 2023. Existem diversas possibilidades para explicar esse fenômeno. Entretanto, acreditamos que isso se deve a uma particularidade do conjunto de dados apresentado, que não se encaixa com a realidade. Ao observar o conjunto de dados mais atentamente, notamos que os voos de 2019 só possuem dados a partir do mês de setembro. Portanto, vamos comparar a quantidade de voos em cada ano para seu respectivo mês.
 <div class="grid grid-cols-2">
     <div id="VoosPorMesAno" class="card grid-colspan-2">
-        <h1 class="title">Quantidade de Voos por mês</h1>
+        <h1 class="title">Quantidade de Vôos por mês</h1>
         <div style="width: 100%; margin-top: 15px;">
             ${vl.render(VoosPorMesAno(divWidth - 200))}
         </div>
@@ -35,12 +35,12 @@ Em contrapartida, o ano em que houve a maior incidência de voos ao longo de tod
 
 Ao observarmos os outros meses, notamos que, na maioria das vezes (desconsiderando o ano de 2019), o ano em que observamos a maior quantidade de voos para cada mês é justamente 2020. Para os primeiros meses do ano, como de janeiro até pelo menos março, isso faz sentido, já que a pandemia foi notificada pela OMS em março de 2020. Entretanto, nos meses seguintes, continuamos a notar que o ano de 2020 teve a maior quantidade de voos registrados.
 
-# Quantidade de Voos por classe
+# Quantidade de Vôos por classe
 Agora, queremos descobrir a distribuição de acomodações de voo (Classe Econômica, Premium ou Primeira Classe) em relação aos voos de cada ano presente no conjunto de dados, para tentar entender melhor que tipo de viagem foi mais requisitada pelos passageiros neste período.
 
 <div class="grid grid-cols-2">
     <div id="TiposDeTarifaPorAno" class="card grid-colspan-2">
-        <h1 class="title">Quantidade de Voos em cada categoria</h1>
+        <h1 class="title">Quantidade de Vôos em cada categoria</h1>
         <div style="width: 100%; margin-top: 15px;">
             ${vl.render(TiposDeTarifaPorAno(divWidth - 200))}
         </div>
@@ -51,7 +51,7 @@ Agora, queremos descobrir a distribuição de acomodações de voo (Classe Econ�
 
 <div class="grid grid-cols-2">
     <div id="EconoPremium" class="card grid-colspan-2">
-        <h1 class="title">Voos Primeira Classe x Outros</h1>
+        <h1 class="title">Vôos Primeira Classe x Outros</h1>
         <div style="width: 100%; margin-top: 15px;">
             ${vl.render(EconoPremium(divWidth - 200))}
         </div>
@@ -60,12 +60,12 @@ Agora, queremos descobrir a distribuição de acomodações de voo (Classe Econ�
 
 Ao agrupar os voos de Classe Econômica e Premium e compará-los com a quantidade de voos na Primeira Classe, conseguimos finalmente notar uma predominância das outras classes. Optamos por agrupar porque, na realidade, a disparidade de preço e de público entre a Premium e a Primeira Classe é bem maior do que entre a Classe Econômica e Premium. Portanto, agora podemos observar uma distribuição de dados mais compatível com a realidade do mercado aéreo.
 
-# Voos por Agencia 
+# Vôos por Agência 
 Agora, queremos entender melhor o perfil de cada agência de viagens. Vamos analisar a quantidade de passagens aéreas vendidas por cada uma ao longo dos anos presentes no conjunto de dados.
 
 <div class="grid grid-cols-2">
     <div id="VoosPorAgencia" class="card grid-colspan-2">
-        <h1 class="title">Quantidade de Voos por agência</h1>
+        <h1 class="title">Quantidade de Vôos por agência</h1>
         <div style="width: 100%; margin-top: 15px;">
             ${vl.render(VoosPorAgencia(divWidth - 200))}
         </div>
@@ -75,7 +75,7 @@ Agora, queremos entender melhor o perfil de cada agência de viagens. Vamos anal
 Podemos notar uma grande disparidade entre as agências CloudFly, Rainbow, e FlyingDrops. Com a finalidade de entender melhor o porquê disso, decidimos verificar a quantidade de tarifas que cada agência vendeu nesse mesmo período.
 
 <div id="QuantidadePorTipo" class="card">
-    <h1>Quantidade de Voos por tipo por agência</h1>
+    <h1>Quantidade de Vôos por tipo por agência</h1>
     <div style="width: 100%; margin-top: 15px;">
         ${ vl.render(QuantidadePorTipo(divWidth - 45)) }
     </div>
@@ -86,7 +86,7 @@ Agora, com esta visualização, é possível entender o motivo da grande dispari
 
 <div class="grid grid-cols-2">
     <div id="VoosPorAnoPorAgencia" class="card grid-colspan-2">
-        <h1 class="title">Quantidade de Voos por agência por ano</h1>
+        <h1 class="title">Quantidade de Vôos por agência por ano</h1>
         <div style="width: 100%; margin-top: 15px;">
             ${vl.render(VoosPorAnoPorAgencia(divWidth - 200))}
         </div>
